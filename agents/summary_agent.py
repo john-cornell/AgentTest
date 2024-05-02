@@ -25,5 +25,5 @@ class summary_agent(agent):
 		for i, qa in enumerate(information, start=1):
 			prompt += f"{qa}\n"
    
-		prompt += "\nThink step by step and ENSURE TO ACTUALLY ANSWER THE user-question"
+		prompt += "\nThe user isn't aware of any of this information, so don't answer assuming they are, explain from scratch.\nThink step by step and ENSURE TO ACTUALLY ANSWER THE user-question"
 		return super().call(prompt)
