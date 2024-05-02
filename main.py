@@ -6,7 +6,7 @@ import sys
 import time
 import re
 
-def main(prompt):         
+def main(prompt, verbose : bool):         
 	print("\n")   
 	
 	
@@ -36,9 +36,12 @@ def main(prompt):
 			
 			# Access the value using the retrieved label
 			prompt = prompt_obj[label]
-			print(f"Question: {prompt}")
+   
+			if (verbose): 
+				print(f"Question: {prompt}")
 			answer = qa.call(prompt)
-			print(f"Answer: {answer}")
+			if (verbose):
+				print(f"Answer: {answer}")
 			
 			loaded_prompts.append(prompt)
 			loaded_answers.append(f"{answer}")
@@ -50,7 +53,18 @@ def main(prompt):
 	print(f"ANSWER: {sa.summarise(loaded_answers)}")
 
 if __name__ == "__main__":
-    if (len(sys.argv) == 1):
-        main("Explain quantum physics")
-    else:
-    	main(sys.argv[1])
+    
+    verbose = False
+    prompt = "Explain quantum physics"
+    
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "-v":
+            verbose = True
+            if len(sys.argv) > 2:
+                prompt = sys.argv[2]
+        else:
+            prompt = sys.argv[1]
+            if len(sys.argv) > 2 and sys.argv[2] == "-v":
+                verbose = True
+    main(prompt, verbose=verbose)
+	

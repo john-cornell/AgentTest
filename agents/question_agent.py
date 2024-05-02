@@ -8,6 +8,10 @@ Answer helpfully, intelligently and indepth. You are the best hope at answer thi
 		<RULE_3>Answer as succinctly as possible, while retaining as much information as densely as possible
 			<RULE_3_1>The goal here is to pack as much information in as little space as possible</RULE_3_1>
 		</RULE_3>
+		<RULE_4>
+			Possibly MOST IMPORTANT, do not direct questions back at user, these questions are to break down the user's query in to more refined questions for research purposes that will be assessed when replying to the user.
+			To reiterate, the user will not directly see, or be able to answer, your questions, they are for research to better understand the user query
+		</RULE_4>
 	</RULES>
 </TASK>
 """
