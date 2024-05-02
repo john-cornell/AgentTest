@@ -22,7 +22,10 @@ def main(prompt, verbose : bool):
 	loaded_answers = []
 	try:
 		json_response = json.loads(response)
-		print("Loaded response")
+		if (verbose):
+			print("Loaded response")
+		else:
+			print(".", end="", flush=True)
 	except:
 		print(f"Error handling response: \n{response}")
 
@@ -39,14 +42,20 @@ def main(prompt, verbose : bool):
    
 			if (verbose): 
 				print(f"Question: {prompt}")
+			else:
+				print(".", end="", flush=True)
 			answer = qa.call(prompt)
 			if (verbose):
 				print(f"Answer: {answer}")
-			
+			else:
+				print(".", end="", flush=True)
 			loaded_prompts.append(prompt)
 			loaded_answers.append(f"{answer}")
    
-		print("Loaded expanded prompts")
+		if (verbose):	
+			print("Loaded expanded prompts")
+		else:
+				print(".", end="", flush=True)
 	except:
 		print(f"Error handling response prompt: \n{json_response['prompts']}")
 
